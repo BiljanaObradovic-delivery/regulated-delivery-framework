@@ -13,7 +13,7 @@ Every RWA programme requires 25 distinct delivery plans. The critical insight is
 
 | Layer | Plans |
 |-------|-------|
-| **L0** | 7 plans |
+| **L0** | Programme Delivery Plan · Token Strategy · Risk Management Plan · Investor Acquisition Strategy · Communication Strategy · Security Strategy & Wallet Policy · Key Person Succession Plan |
 | **L1** | 6 plans |
 | **L1–2** | 1 plan |
 | **L2** | 2 plans |
@@ -35,19 +35,19 @@ Every RWA programme requires 25 distinct delivery plans. The critical insight is
 
 Standard risk registers miss the categories that actually cause delays. An RWA programme requires all 11.
 
-| # | Category | Note |
-|---|----------|------|
-| 1 | Documentation & Compliance | |
-| 2 | Legal & Regulatory | |
-| 3 | Governance | |
-| 4 | Delivery | |
-| 5 | Protocol & Smart Contract | |
-| 6 | Technology & Infrastructure | |
-| 7 | Solvency & Liquidity | |
-| 8 | Security | |
-| 9 | Vendor & Oracle | |
-| 10 | KYC/AML | |
-| 11 | **Soft Risks** | ← not in standard registers |
+| # | Category |
+|---|----------|
+| 1 | Documentation & Compliance |
+| 2 | Legal & Regulatory |
+| 3 | Governance |
+| 4 | Delivery |
+| 5 | Protocol & Smart Contract |
+| 6 | Technology & Infrastructure |
+| 7 | Solvency & Liquidity |
+| 8 | Security |
+| 9 | Vendor & Oracle |
+| 10 | KYC/AML |
+| 11 | **Soft Risks** |
 
 **Soft risks that consistently cause delays without appearing in RAG reports:**
 Stakeholder pseudo-consensus · Slow cross-functional decisions · Unclear ownership at function boundaries · Regulatory fear culture · Blockchain/banking knowledge gap between teams.
@@ -72,18 +72,18 @@ RWA programmes run multiple parallel reporting obligations. Each stream has a na
 
 | Stream | Owner | Deadline |
 |--------|-------|----------|
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
+| NCA — DORA major incident | | |
+| NCA — periodic supervisory | | |
+| SAR / STR to FIU | | |
+| FATCA / CRS | | |
+| Investors — NAV update | | |
+| Investors — material incident | | |
+| Board — programme status | | |
+| Board — risk review | | |
+| Exchange — trade reports | | |
+| Exchange — suspicious activity | | |
+| Banking — reconciliation | | |
+| Market maker — SLA | | |
 
 *Full reporting architecture with owners, deadlines, and escalation paths in the private repository.*
 
@@ -91,46 +91,46 @@ RWA programmes run multiple parallel reporting obligations. Each stream has a na
 
 ## Vendor Ecosystem — 20 Categories
 
-| Category | Key vendors | Layer | Lead time |
-|----------|------------|-------|-----------|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
+| Category |
+|----------|
+| Oracle |
+| SC Audit |
+| Security / Pentest |
+| Blockchain Monitoring |
+| On-chain Monitoring |
+| KYC / AML |
+| Sanctions Screening |
+| Travel Rule |
+| Custody |
+| Crypto-native Banking |
+| Traditional Banking |
+| Exchange |
+| Market Maker |
+| Valuation — Real Estate |
+| Valuation — ESG/Carbon |
+| Legal Counsel |
+| Regulatory Advisor |
+| RegTech / Reporting |
+| Cloud Infrastructure |
+| Token Platform |
 
-**Three vendor rules:**
-1. Book SC audit firms in Layer 1 — slots fill fast
-2. Screen minimum 3 banks simultaneously from Week 1 — never a single banking relationship
-3. Every vendor has a named PM owner — vendors without a named owner fail silently
-
-*Full vendor list with RACI, SLA register, and selection criteria in the private repository.*
+*Full vendor list with key vendors, layers, lead times, RACI, SLA register, and selection criteria per operating model in the private repository.*
 
 ---
 
 ## What the Full Framework Contains
 
-- **Consulting deck** — complete delivery architecture across all 7 layers with KPIs, RACI, strategies
-- **Integration register** — 15 integrations with vendor, API type, lead time, SLA, escalation procedure
-- **Banking onboarding scenarios** — crypto-native vs neo vs traditional bank requirements
-- **Risk register** — 60+ risks, 11 categories, scoring system, trigger conditions
+- **Consulting deck** — complete delivery architecture across all 7 layers with KPIs, RACI, strategies, gate criteria, and hard blockers per layer
+- **25 delivery plans** — full names, initiation layer, named owner, approver, and timing for all 25 plans
+- **Integration register** — 15 integrations with vendor, API type, lead time, SLA, and escalation procedure
+- **Banking onboarding scenarios** — crypto-native vs neo vs traditional bank requirements, document package, rejection patterns
+- **Risk register** — 60+ risks across 11 categories, each with trigger condition, mitigation, owner, layer, and KPI
 - **KPI & milestones by layer** — gate criteria, red flags, go/no-go conditions per layer
 - **Asset type architecture** — Real Estate vs US Treasuries vs ESG delivery differences
+- **Vendor ecosystem** — 20 categories with key vendors, lead times, selection criteria, and RACI per operating model
+- **Reporting architecture** — 12 streams with named owners, deadlines, and escalation paths
+- **Operating models** — 5 models with team structure, go-live timeline, TVL threshold, and best-fit criteria
+- **Hypercare plan** — Days 1–30 post go-live, escalation matrix, handover gate
 
 *Access by qualified engagement only.*
 

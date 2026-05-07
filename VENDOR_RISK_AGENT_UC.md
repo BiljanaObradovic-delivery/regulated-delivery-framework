@@ -37,8 +37,8 @@ Given a vendor incident or scenario, the agent produces:
 ---
 ## Stack
 
-Built with Claude (Anthropic) as the reasoning engine.  
-Frontend deployed on Netlify. Scenario data is structured JSON.  
+Built with Claude (Anthropic) as the reasoning engine.
+Frontend runs locally as HTML — no deployment required.
 Agent logic, scoring, and programme-specific configuration are in a private repository.
 
 ---

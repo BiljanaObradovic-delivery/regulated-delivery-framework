@@ -1,6 +1,7 @@
 # RWA Delivery Framework
 **The 7 Operational Layers of Real World Asset Programmes**
 *A structured delivery governance framework for programme managers in regulated tokenisation environments.*
+
 ---
 
 Most RWA programmes do not fail because the technology doesn't work. They fail because governance is introduced too late, compliance is treated as a delivery dependency too late, and the operating model is never defined in Layer 0.
@@ -8,6 +9,18 @@ Most RWA programmes do not fail because the technology doesn't work. They fail b
 This framework maps the eight layers every regulated RWA programme must address — in the sequence they must be addressed.
 
 *Built from 20+ years of delivery experience across fintech, banking, and BFSI environments.*
+
+---
+
+## 🛠 Delivery Methodology: Context-First Approach
+
+In regulated enterprise environments, frameworks are tools, not dogmas. My delivery approach focuses on applying the right framework to the right context:
+
+- **SAFe (Scaled Agile):** Addresses enterprise-scale delivery, regulatory constraints, and strategy-to-execution alignment.
+- **Scrum:** Optimized for development team-level speed and fast feedback loops.
+- **Kanban:** Excels in flow-based operations, handling compliance findings, security incidents, and operational changes.
+
+**[Read the full Methodology Manifest here](./METHODOLOGY.md)** — *A practical guide on when to use SAFe, Scrum, or Kanban in Fintech.*
 
 ---
 
@@ -21,7 +34,7 @@ This framework maps the eight layers every regulated RWA programme must address 
 
 **[VENDOR_RISK_AGENT_UC.md](https://github.com/BiljanaObradovic-delivery/rwa-delivery-framework/blob/main/VENDOR_RISK_AGENT_UC.md)** — Use case scenarios for the AI vendor risk escalation agent built on top of this framework.
 
-**[fintech-dashboard.md](https://github.com/BiljanaObradovic-delivery/rwa-delivery-framework/blob/main/fintech-dashboard.md)** — Fintech Programme Dashboard: multi-country core banking delivery intelligence for Group CTOs and Programme Directors. Screenshot + full capability overview.
+**[fintech-dashboard.md](https://github.com/BiljanaObradovic-delivery/rwa-delivery-framework/blob/main/fintech-dashboard.md)** — Fintech Programme Dashboard: multi-country core banking delivery intelligence for Group CTOs and Programme Directors.
 
 ---
 
@@ -37,8 +50,7 @@ The system covers both RWA tokenisation and multi-country fintech programme deli
 - RWA Tokenisation — MiCA/DORA regulatory frame, oracle incidents, custody, CASP licensing
 - Fintech / Core Banking — multi-country waves, integration health, gate tracking, T24/MuleSoft/Azure
 
-**Demo available at interview or on qualified request.**  
-See [VENDOR_RISK_AGENT_UC.md](https://github.com/BiljanaObradovic-delivery/rwa-delivery-framework/blob/main/VENDOR_RISK_AGENT_UC.md) for real-programme use cases.
+**Demo available at interview or on qualified request.** See [VENDOR_RISK_AGENT_UC.md](https://github.com/BiljanaObradovic-delivery/rwa-delivery-framework/blob/main/VENDOR_RISK_AGENT_UC.md) for real-programme use cases.
 
 ---
 
@@ -62,12 +74,7 @@ Available to qualified engagements on request.
 
 ---
 
-*Original framework by Biljana Obradović — 20+ years in fintech, banking, and BFSI.*  
-*Attribution required: "7 Operational Layers of RWA Programmes — Biljana Obradović, Concept360, 2026"*
+*Original framework by Biljana Obradović — 20+ years in fintech, banking, and BFSI.* *Attribution required: "7 Operational Layers of RWA Programmes — Biljana Obradović, Concept360, 2026"*
 
 → [biljana.obradovic@concept360.rs](mailto:biljana.obradovic@concept360.rs)  
-→ [linkedin.com/in/biljana-obradovic-28390a8](https://linkedin.com/in/biljana-obradovic-28390a8)
-
-
-→ [biljana.obradovic@concept360.rs](mailto:biljana.obradovic@concept360.rs)
 → [linkedin.com/in/biljana-obradovic-28390a8](https://linkedin.com/in/biljana-obradovic-28390a8)

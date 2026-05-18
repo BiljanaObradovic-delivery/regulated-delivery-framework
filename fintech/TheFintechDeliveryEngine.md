@@ -3,7 +3,7 @@
 
 ---
 
-![Constellation360 — Fintech Delivery Engine](..assets/fintech-engine-preview.png)
+![Constellation360 — Fintech Delivery Engine](../assets/fintech-engine-preview.png)
 
 Multi-country core banking programmes are won or lost before the first wave goes live.
 

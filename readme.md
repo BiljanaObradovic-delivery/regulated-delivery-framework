@@ -1,5 +1,5 @@
 # Regulated Financial Delivery — Frameworks & Systems
-**20+ years of delivery experience across fintech, banking, and BFSI environments.**
+**20+ years of delivery experience across BFSI environments.**
 
 Most regulated programmes don't fail because the technology doesn't work.
 They fail because governance is introduced too late, compliance becomes a blocker too late, and the operating model is never defined before the first line of code is written.

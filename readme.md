@@ -4,7 +4,7 @@
 Most regulated programmes don't fail because the technology doesn't work.
 They fail because governance is introduced too late, compliance becomes a blocker too late, and the operating model is never defined before the first line of code is written.
 
-![Constellation360 — The Digital Engine](digital-engine-preview.png)
+![Constellation360 — The Digital Engine](assets/digital-engine-preview.png)
 
 Two frameworks. Two intelligent systems. Built for regulated financial delivery.
 

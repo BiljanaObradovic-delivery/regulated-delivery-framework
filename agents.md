@@ -32,7 +32,7 @@ Manages investor onboarding flows, KYC/KYT pipeline coordination, CDD/EDD trigge
 ### Escalation & Incident Management
 Classifies vendor and operational incidents (P1/P2). Builds escalation sequences per RACI. Routes to the right owner with time-bound actions and regulatory obligation mapping.
 
-### Programme Governance
+### Program Governance
 Tracks delivery plans, gate blockers, risk registers, budget variance, dependency orchestration, and RACI drift. Surfaces programme health signals.
 
 ### Reporting & Audit Trail

@@ -1,4 +1,4 @@
-# Constellation360 — Fintech Delivery Engine
+# Concept360 — Delivery-Intelligence-System 
 **Programme intelligence for multi-country core banking delivery.**
 
 ---

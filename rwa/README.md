@@ -45,7 +45,7 @@ Every role mapped across Small / Medium / Large programmes — from SC Engineer 
 
 ## The Intelligent System
 
-This framework is the operational backbone of **Concept360 — The Digital Engine** — a live operations intelligence system for regulated infrastructure providers.
+This framework is the operational backbone of **Concept360 — The Delivery Intelligence Engine** — a live operations intelligence system for regulated infrastructure providers.
 
 One screen. 20 operational workflows. DORA readiness, ICT incident tracking, issuer pipeline, third-party ICT register, Proof of Reserve, AI-drafted regulatory reports.
 

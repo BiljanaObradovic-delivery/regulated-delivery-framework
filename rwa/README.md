@@ -18,12 +18,27 @@ This framework maps every layer a regulated RWA programme must address, in the s
 | L4 — Build & Audit | SC development, pen test, SAST/DAST | Audit findings delay go-live |
 | L5 — Integration & Testing | End-to-end, settlement, PoR baseline | Go-live with untested critical paths |
 | L6 — Go-Live & Operations | G-OPS gate, hypercare, steady state | Operational blindness from Day 1 |
+| L7 — Post-Launch & Steady State | Continuous compliance, KRI monitoring, reporting | Drift from regulatory posture goes undetected |
+
+---
+
+## Operational Guides
+
+Detailed delivery documentation for the most critical — and most underestimated — workstreams in a regulated RWA programme:
+
+| Guide | What It Covers |
+|---|---|
+| [CASP Licensing Overview](./casp_licensing_overview.md) | MiCA CASP licensing flow, NCA selection, timeline, application components, stage-gate model |
+| [Custody Sequencing Overview](./custody_sequencing_overview.md) | Custody decision tree, wallet architecture, key ceremony coordination, PM checklist L0→L7 |
+| [KYC / AML Onboarding](./kyc_aml_onboarding_teaser.md) | Investor tier structure, KYC/AML pipeline, vendor selection criteria, Layer 5 critical path, bottleneck patterns |
+| [Banking Access & SPV Screening](./banking_access_spv_overview.md) | Why banks reject tokenisation SPVs, parallel screening strategy, timeline, PM week-by-week tracker |
 
 ---
 
 ## Delivery Team
 
 Every role mapped across Small / Medium / Large programmes — from SC Engineer to MLRO to Key Ceremony Coordinator.
+
 → [See delivery-team.md](./delivery-team.md)
 
 ---
@@ -43,3 +58,4 @@ One screen. 20 operational workflows. DORA readiness, ICT incident tracking, iss
 *Biljana Obradović · Concept360 · 2026*
 → [biljana.obradovic@concept360.rs](mailto:biljana.obradovic@concept360.rs)
 → [linkedin.com/in/biljana-obradovic-28390a8](https://linkedin.com/in/biljana-obradovic-28390a8)
+

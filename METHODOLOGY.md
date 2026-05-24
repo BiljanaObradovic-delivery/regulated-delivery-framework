@@ -1,7 +1,11 @@
 # Delivery Methodology — Context-First Approach
-**Regulated financial delivery across RWA tokenisation and core banking programmes.**
+**Concept360 · Biljana Obradović · © 2026**
 
-In regulated enterprise environments, frameworks are tools, not dogmas. The right governance layer depends on the programme context, the regulatory environment, and where the critical path actually sits.
+Regulated financial delivery across RWA tokenization and core banking programs.
+
+The Execution Gap — the distance between what was planned, what was approved, and what is actually operational — does not appear because the wrong framework was chosen. It appears because the right governance layer was introduced too late, or not at all.
+
+Context-First is the methodology that underpins the Execution Gap Framework. It does not prescribe a single delivery approach. It prescribes the right approach for the right layer — and the discipline to define that before the first vendor is onboarded or the first line of code is written.
 
 ---
 
@@ -9,28 +13,31 @@ In regulated enterprise environments, frameworks are tools, not dogmas. The righ
 
 Successful delivery in regulated environments is not about strictly following a single agile framework. It is about applying the right method to the right layer — and knowing when to switch.
 
-> Governance is a driver of success, not a bottleneck. It must be defined at Layer 0 — before the first vendor is onboarded, before the first line of code is written.
+> Governance is a driver of success, not a bottleneck. It must be defined at L0 — before the first vendor is onboarded, before the first line of code is written. A governance structure introduced at L3 or L4 is not governance. It is damage control.
 
 ---
 
 ## Framework Application
 
 **SAFe (Scaled Agile)**
-Enterprise and programme level. Aligns strategy, budget, and complex dependencies across multiple teams, vendors, and jurisdictions. Used when: multi-country scope, regulatory constraints, strategy-to-execution alignment required.
+Enterprise and program level. Aligns strategy, budget, and complex dependencies across multiple teams, vendors, and jurisdictions.
+Used when: multi-country scope, regulatory constraints, strategy-to-execution alignment required.
 
 **Scrum**
-Development team level. High-velocity feedback loops, clear sprint goals, fast iteration. Used when: feature development, SC build, integration sprints with defined scope.
+Development team level. High-velocity feedback loops, clear sprint goals, fast iteration.
+Used when: feature development, SC build, integration sprints with defined scope.
 
 **Kanban**
-Operational stability and flow. Compliance findings, security incidents, vendor escalations, change requests. Used when: priorities shift rapidly, work is continuous and unpredictable, SLA adherence is the primary metric.
+Operational stability and flow. Compliance findings, security incidents, vendor escalations, change requests.
+Used when: priorities shift rapidly, work is continuous and unpredictable, SLA adherence is the primary metric.
 
 ---
 
-## Where They Apply — By Programme
+## Where They Apply — By Program Context
 
-| Context | RWA Tokenisation | Core Banking Delivery |
+| Context | RWA Tokenization | Core Banking Delivery |
 |---|---|---|
-| Programme governance | SAFe | SAFe |
+| Program governance | SAFe | SAFe |
 | SC / feature development | Scrum | Scrum |
 | Compliance & incident ops | Kanban | Kanban |
 | Vendor escalation | Kanban | Kanban |
@@ -38,22 +45,23 @@ Operational stability and flow. Compliance findings, security incidents, vendor 
 
 ---
 
-## The 7-Layer Governance Model
+## The Execution Gap Framework — 7 Operational Layers
 
-Both programmes — RWA and Fintech — are structured across seven operational layers. The layers ensure zero blind spots from operating model definition through to live operations.
+Both contexts — RWA tokenization and regulated fintech — are structured across seven operational layers. The layers ensure zero blind spots from Foundation & Operating Model through to Go-Live & Operations.
 
-→ [See 7LAYERS.md](./7LAYERS.md) for full layer breakdown across both programmes.
+The sequence matters. Skipping a layer does not remove it — it relocates the problem to a later, more expensive stage.
 
----
-
-## AI-Augmented Delivery
-
-Both frameworks are operationalised through **Constellation360** — an intelligent operations system that runs governance, compliance, and delivery oversight as live, orchestrated workflows rather than periodic document exercises.
-
-**For RWA:** Constellation360 — The Digital Engine
-**For Fintech:** Constellation360 — Fintech Delivery Engine
+→ [See ExecutionGapFramework_7Layers.md](./ExecutionGapFramework_7Layers.md) for full layer breakdown, gate logic, and failure modes across both contexts.
 
 ---
 
-*Biljana Obradović · Concept360 · 2026*
+## The Delivery Intelligence System
+
+Both frameworks are operationalized through the **Concept360 Delivery Intelligence System** — a live operations platform that turns governance, compliance, and delivery oversight from document exercises into orchestrated, real-time workflows.
+
+> For a live demo or to discuss an engagement — [Start the conversation](https://biljanaobradovic-delivery.github.io/execution-gap-framework/#contact)
+
+---
+
+*RWA Execution Gap Methodology © Biljana Obradović · Concept360 · 2026*
 

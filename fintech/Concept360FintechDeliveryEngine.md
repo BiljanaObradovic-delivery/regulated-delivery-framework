@@ -1,11 +1,11 @@
 # Concept360 — Delivery-Intelligence-System 
-**Programme intelligence for multi-country core banking delivery.**
+**Program intelligence for multi-country fintech systems delivery.**
 
 ---
 
 ![Constellation360 — Fintech Delivery Engine](../assets/fintech-engine-preview.png)
 
-Multi-country core banking programmes are won or lost before the first wave goes live.
+Multi-country banking programs are won or lost before the first wave goes live.
 
 Gate governance that exists only in PowerPoint. Integration dependencies discovered at UAT. A Group CTO who learns about a critical blocker in a weekly status report — three days after it became unrecoverable.
 

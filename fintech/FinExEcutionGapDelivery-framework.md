@@ -1,6 +1,6 @@
-# 7 Layers — Fintech & Bank Programme Delivery
+# 7 Layers — Fintech & Bank Execution Gap Program Delivery
 
-## Multi-Country, Multi-Vendor Implementation Framework
+## Multi-Country, Multi-Vendor, Multi-Jurisdictions Implementation Framework
 
 **© Biljana Obradović · Concept360 · 2026**
 

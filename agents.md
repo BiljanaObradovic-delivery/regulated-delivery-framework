@@ -1,10 +1,10 @@
 # AI Intelligence Layer — Agent Overview
 
-**Constellation360 · Concept360 · 2026**
+**Concept360 · 2026**
 
 ---
 
-Both systems — The Digital Engine (RWA) and the Fintech Delivery Engine — are backed by the same AI intelligence layer.
+Both systems — Concept360 — Delivery Intelligence System — available in RWA and Fintech configurations — are backed by the same AI intelligence layer.
 
 One engine. Two delivery contexts. Same agents, different regulatory mapping and vendor ecosystem.
 
@@ -12,7 +12,7 @@ One engine. Two delivery contexts. Same agents, different regulatory mapping and
 
 ## What the Intelligence Layer Does
 
-Regulated programmes generate more operational signal than any team can manually process — vendor incidents, compliance gaps, delivery blockers, escalation chains, onboarding exceptions, regulatory countdowns.
+Regulated programs generate more operational signal than any team can manually process — vendor incidents, compliance gaps, delivery blockers, escalation chains, onboarding exceptions, regulatory countdowns.
 
 The intelligence layer does not replace governance decisions. It extracts, classifies, structures, and routes — so that humans decide faster and with better information.
 
@@ -59,13 +59,13 @@ Agents are built in dependency order — data foundation first, then leaf agents
 
 No agent operates without a confirmed data source. No escalation fires without a classified incident. No report is sent without human review.
 
-**Critical principle:** AI does not make programme decisions. It structures complexity so that humans decide with better information.
+**Critical principle:** AI does not make program decisions. It structures complexity so that humans decide with better information.
 
 ---
 
 ## What Is Not Here
 
-Agent prompts, scoring models, decision logic, and programme-specific configuration are part of a private delivery framework and are not included in this repository.
+Agent prompts, scoring models, decision logic, and program-specific configuration are part of a private delivery framework and are not included in this repository.
 
 For a live walkthrough — reach out directly.
 

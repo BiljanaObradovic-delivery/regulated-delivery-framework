@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7-Layer Master Reference — Concept360</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600;700&display=swap');
+
+  :root {
+    --navy: #0D1B2A;
+    --navy2: #1B2D40;
+    --navy3: #243447;
+    --accent: #00C6FF;
+    --accent2: #0078D4;
+    --gold: #F4B942;
+    --green: #22C55E;
+    --amber: #F59E0B;
+    --red: #EF4444;
+    --text: #E8EDF2;
+    --muted: #7A909E;
+    --border: #2A3F52;
+    --surface: #162030;
+    --surface2: #1E2E3E;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, var(--navy2) 0%, var(--navy3) 100%);
+    border-bottom: 2px solid var(--accent);
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-left h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  .header-left p {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* SYSTEM TABS */
+  .system-tabs {
+    display: flex;
+    gap: 8px;
+  }
+  .sys-tab {
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    transition: all 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .sys-tab.active {
+    background: var(--accent2);
+    border-color: var(--accent);
+    color: white;
+  }
+  .sys-tab:hover:not(.active) {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* MAIN LAYOUT */
+  .main { display: flex; height: calc(100vh - 73px); }
+
+  /* LAYER SIDEBAR */
+  .sidebar {
+    width: 200px;
+    min-width: 200px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+    padding: 16px 0;
+  }
+  .layer-btn {
+    width: 100%;
+    padding: 12px 16px;
+    text-align: left;
+    background: none;
+    border: none;
+    border-left: 3px solid transparent;
+    cursor: pointer;
+    color: var(--muted);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 12px;
+    transition: all 0.15s;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .layer-btn:hover { background: var(--surface2); color: var(--text); }
+  .layer-btn.active {
+    background: var(--surface2);
+    border-left-color: var(--accent);
+    color: var(--accent);
+  }
+  .layer-btn .lnum {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    opacity: 0.7;
+  }
+  .layer-btn .lname { font-weight: 600; font-size: 12px; }
+  .layer-btn .lstatus { font-size: 10px; }
+
+  /* CONTENT AREA */
+  .content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 24px 32px;
+    background: var(--navy);
+  }
+
+  /* LAYER HEADER */
+  .layer-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .layer-badge {
+    background: var(--accent2);
+    color: white;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 20px;
+    font-weight: 700;
+    padding: 12px 16px;
+    border-radius: 6px;
+    min-width: 70px;
+    text-align: center;
+    line-height: 1;
+  }
+  .layer-title h2 { font-size: 22px; font-weight: 700; color: var(--text); }
+  .layer-title p { font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .layer-title .fintech-name {
+    font-size: 12px;
+    color: var(--gold);
+    margin-top: 4px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* ENTITY GRID */
+  .entity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 16px;
+  }
+
+  /* ENTITY CARD */
+  .entity-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .entity-card-header {
+    padding: 10px 14px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .entity-icon { font-size: 14px; }
+  .entity-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+  }
+  .entity-body { padding: 12px 14px; }
+  .entity-item {
+    padding: 5px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .entity-item:last-child { border-bottom: none; }
+  .entity-item .tag {
+    font-size: 10px;
+    font-family: 'IBM Plex Mono', monospace;
+    padding: 1px 6px;
+    border-radius: 3px;
+    white-space: nowrap;
+    min-width: 60px;
+    text-align: center;
+  }
+  .tag.critical { background: rgba(239,68,68,0.2); color: var(--red); border: 1px solid rgba(239,68,68,0.3); }
+  .tag.high { background: rgba(245,158,11,0.2); color: var(--amber); border: 1px solid rgba(245,158,11,0.3); }
+  .tag.medium { background: rgba(0,198,255,0.1); color: var(--accent); border: 1px solid rgba(0,198,255,0.2); }
+  .tag.low { background: rgba(34,197,94,0.1); color: var(--green); border: 1px solid rgba(34,197,94,0.2); }
+  .tag.blocker { background: rgba(239,68,68,0.3); color: var(--red); border: 1px solid var(--red); }
+  .tag.rwa { background: rgba(0,120,212,0.2); color: #60a5fa; border: 1px solid rgba(0,120,212,0.3); }
+  .tag.fintech { background: rgba(244,185,66,0.15); color: var(--gold); border: 1px solid rgba(244,185,66,0.3); }
+  .tag.both { background: rgba(34,197,94,0.1); color: var(--green); border: 1px solid rgba(34,197,94,0.2); }
+  .tag.new { background: rgba(139,92,246,0.2); color: #a78bfa; border: 1px solid rgba(139,92,246,0.3); }
+
+  .entity-item .text { color: var(--text); line-height: 1.4; }
+  .entity-item .sub { color: var(--muted); font-size: 11px; }
+
+  /* GATE BOX */
+  .gate-box {
+    background: var(--surface2);
+    border: 1px solid var(--accent2);
+    border-radius: 6px;
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+  .gate-box h3 {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .gate-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 4px 0;
+    font-size: 12px;
+  }
+  .gate-item::before { content: '✓'; color: var(--green); font-weight: 700; min-width: 14px; }
+  .gate-item.blocker::before { content: '⚑'; color: var(--red); }
+
+  /* OVERLAP RULE */
+  .overlap-rule {
+    background: rgba(244,185,66,0.08);
+    border: 1px solid rgba(244,185,66,0.3);
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 12px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+
+  /* AGENTS SECTION */
+  .agents-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 10px 14px;
+  }
+  .agent-chip {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 12px;
+    background: rgba(0,120,212,0.15);
+    border: 1px solid rgba(0,120,212,0.3);
+    color: #60a5fa;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+  .agent-chip.new-agent {
+    background: rgba(139,92,246,0.15);
+    border-color: rgba(139,92,246,0.3);
+    color: #a78bfa;
+  }
+
+  /* SYSTEM PANEL */
+  .system-panel { display: none; }
+  .system-panel.active { display: block; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--navy); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 12px;
+    font-size: 10px;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    font-family: 'IBM Plex Mono', monospace;
+    background: var(--surface);
+  }
+
+  /* LEGEND */
+  .legend {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    padding: 12px 32px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    font-size: 11px;
+  }
+  .legend-item { display: flex; align-items: center; gap: 6px; color: var(--muted); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>7-Layer Master Reference</h1>
+    <p>CONCEPT360 · Biljana Obradovic · © 2026 · CONFIDENTIAL</p>
+  </div>
+  <div class="system-tabs">
+    <button class="sys-tab active" onclick="switchSystem('rwa', this)">The Digital Engine (RWA)</button>
+    <button class="sys-tab" onclick="switchSystem('fintech', this)">The Fintech Engine (Bank)</button>
+  </div>
+</div>
+
+<div class="legend">
+  <div class="legend-item"><span class="tag blocker">BLOCKER</span> Gate blocker</div>
+  <div class="legend-item"><span class="tag critical">CRITICAL</span> Critical priority</div>
+  <div class="legend-item"><span class="tag rwa">RWA</span> RWA only</div>
+  <div class="legend-item"><span class="tag fintech">FINTECH</span> Fintech only</div>
+  <div class="legend-item"><span class="tag both">BOTH</span> Both systems</div>
+  <div class="legend-item"><span class="tag new">NEW</span> Added this session</div>
+</div>
+
+<div class="main">
+  <div class="sidebar" id="sidebar"></div>
+  <div class="content" id="content"></div>
+</div>
+
+<div class="footer">
+  Attribution required: "7 Operational Layers of RWA Programmes — Biljana Obradović, Concept360, 2026"
+</div>
+
+<script>
+// ── DATA ──────────────────────────────────────────────────────────────────────
+
+const SYSTEMS = {
+  rwa: {
+    name: "The Digital Engine",
+    subtitle: "RWA Tokenization Intelligence System",
+    layers: [
+      {
+        id: "L0", name: "Foundation & Business Case",
+        desc: "Business case, operating model, legal structure, jurisdiction, SPV design, team",
+        overlap: "Cannot overlap — must be complete before L1",
+        gate: [
+          { text: "Signed LoI + legal opinion issued", blocker: true },
+          { text: "Operating model confirmed (Models 1-5)", blocker: true },
+          { text: "Budget approved (CEO + CFO + Board)", blocker: true },
+          { text: "Token type decision initiated — legal opinion commissioned", blocker: true },
+          { text: "CASP/VASP strategy confirmed", blocker: false },
+          { text: "Investor eligibility framework confirmed", blocker: false },
+          { text: "AML risk appetite board-approved", blocker: true },
+          { text: "Custody model locked", blocker: true },
+        ],
+        plans: ["Plan #1: Business Case & Operating Model", "Plan #2: Legal Structure & SPV Design"],
+        tests: [],
+        risks: ["Operating model discovered wrong post-L3 → full restart", "No investor demand post-launch", "Budget underestimated — programme paused"],
+        issues: ["Edge Case (7): SPV structure doesn't fit target jurisdiction", "Dependency (6): Legal counsel availability"],
+        assumptions: ["Financial: Revenue model is viable at target TVL", "Regulatory: Jurisdiction selection confirmed stable", "Market: Investor demand exists for this asset class"],
+        decisions: ["Strategic: Operating model selection (1-5)", "Strategic: Jurisdiction selection", "Strategic: Token type (security/utility/ART)"],
+        kpi: ["Business case approval timeline", "Operating model decision date"],
+        kri: ["No legal opinion within 30 days of L0 start", "Budget variance >20% vs estimate"],
+        agents: ["Agent 2: Programme MA — creates 25 delivery plans", "Agent 22: DD Orchestrator — project DD starts", "Agent 20: Calendar — schedules all audits"],
+        compliance: ["AML risk appetite statement (board-approved)", "GDPR data processing assessment starts", "Compliance PM = Responsible (not Consulted) from Week 2"],
+        documents: ["Business Case document", "LoI signed", "Legal opinion (commissioned)", "AML risk appetite statement", "Board minutes"],
+        audit: ["Cat.17: Gate Decision — L0 gate sign-off", "Cat.16: Assumption & Decision — operating model", "Cat.15: Document — all L0 documents"],
+        reports: ["L0 Gate Report (per gate, Board)", "Project Initiation Report"],
+        budget: ["Legal & Regulatory: €20-50k", "Team composition costs", "Advisory fees"],
+        raci: ["Programme Director: Accountable", "Legal PM: Responsible (legal)", "Compliance PM: Responsible (compliance framework)", "CFO: Responsible (budget approval)"],
+        integrations: [],
+        change: ["CM impact: Operating model change = programme restart risk. CAB required.", "15-dimension impact assessment mandatory for any L0 scope change"]
+      },
+      {
+        id: "L1", name: "Legal & Regulatory",
+        desc: "CASP/VASP registration, eWpG application, KWG review, AML programme, MLRO appointed",
+        overlap: "L2 can start at 50% L1 completion",
+        gate: [
+          { text: "NCA application submitted", blocker: true },
+          { text: "MLRO appointed + NCA notified", blocker: true },
+          { text: "AML Programme written + board-approved", blocker: true },
+          { text: "Legal opinion finalized per jurisdiction", blocker: true },
+          { text: "Token classification legal opinion issued", blocker: true },
+          { text: "ISO 27001 gap assessment started", blocker: false },
+          { text: "Custody regulatory requirements documented", blocker: false },
+        ],
+        plans: ["Plan #3: Regulatory Strategy", "Plan #4: AML Programme ⚠️ STARTED TOO LATE", "Plan #5: MLRO Appointment ⚠️ STARTED TOO LATE"],
+        tests: ["ISO 27001 Gap Assessment (L1+, annual)", "VARA Operational Test (Dubai clients)", "FINMA compliance check (Swiss clients)"],
+        risks: ["Regulatory rejection — NCA rejects application → SEV1", "MLRO departure post-go-live → NCA 4-8 week notice", "Token misclassification → architectural redesign"],
+        issues: ["Regulatory (5): CASP timeline slips 3-6 months", "Resource (3): MLRO recruitment difficulty"],
+        assumptions: ["Regulatory: NCA approval within planned timeline", "Regulatory: Token classification will be confirmed by L2"],
+        decisions: ["Regulatory: CASP/VASP licence strategy", "Regulatory: Which NCA, which jurisdiction first"],
+        kpi: ["NCA application submission date", "MLRO appointment date", "AML Programme approval date"],
+        kri: ["NCA application not submitted by L1 midpoint", "MLRO vacancy >30 days", "Legal opinion not commissioned within 2 weeks of L1 start"],
+        agents: ["Agent 11: Regulatory Intelligence — monitors BaFin/NCA/ESMA daily", "Agent 12: Regulatory Transition — tracks BAIT→DORA, VASP→CASP", "Agent 7: Onboarding — KYC programme configured"],
+        compliance: ["AML Programme = GATE BLOCKER — no L2 without it", "Compliance PM in ALL design sessions from Week 2", "Mandatory field compliance justification documented"],
+        documents: ["NCA application package", "AML Programme (board-approved)", "MLRO appointment letter + NCA notification", "Legal opinions per jurisdiction", "Token classification legal opinion"],
+        audit: ["Cat.5: Compliance & Regulatory — NCA filings, AML decisions", "Cat.17: Gate Decision — L1 gate", "Cat.16: Assumption — regulatory timeline assumptions"],
+        reports: ["Regulatory Readiness Report (monthly, Compliance PM)", "L1 Gate Report (Board)"],
+        budget: ["Legal & Regulatory: €40-120k", "MLRO salary starts", "NCA application fees"],
+        raci: ["Legal PM: Responsible (regulatory applications)", "MLRO: Responsible (AML programme)", "Compliance PM: Responsible (all compliance decisions)", "Programme Director: Accountable"],
+        integrations: [],
+        change: ["Regulatory change mid-programme → Agent 19 CM activates", "Token classification change at L1 = Architecture redesign risk"]
+      },
+      {
+        id: "L2", name: "Token Architecture / SPV & Asset",
+        desc: "ERC-3643 config, ONCHAINID setup, smart contract design, compliance module, tokenomics, SPV incorporation, RICS valuation",
+        overlap: "Starts at 50% L1. L3 cannot start until L2 gate complete.",
+        gate: [
+          { text: "Token architecture document signed", blocker: true },
+          { text: "Compliance module spec approved", blocker: true },
+          { text: "SPV incorporated + legal opinion issued", blocker: true },
+          { text: "RICS valuation complete", blocker: true },
+          { text: "PoR methodology approved (Merkle tree vs reconciliation)", blocker: true },
+          { text: "Custody SLA signed", blocker: false },
+          { text: "Oracle contracted", blocker: false },
+        ],
+        plans: ["Plan #6: Token Architecture Design", "Plan #2b: SPV & Legal Structure"],
+        tests: ["GDPR Data Mapping (L2, annual)"],
+        risks: ["Custody model decided too late to change", "PoR not in original architecture → migration", "Wrong token class = full architectural redesign"],
+        issues: ["Technical (1): PoR methodology conflict between legal and technical teams", "Dependency (6): RICS appraiser availability"],
+        assumptions: ["Technical: ERC-3643 standard will be supported by chosen infrastructure", "Legal: SPV structure approved by target jurisdiction"],
+        decisions: ["Architectural: Token standard (ERC-3643 vs ERC-20 vs hybrid)", "Architectural: PoR methodology", "Architectural: Custody model (self/third-party/hybrid) — LOCKED after L3"],
+        kpi: ["Token architecture completion date", "SPV incorporation date"],
+        kri: ["Custody model not confirmed by L2 gate", "PoR methodology not decided"],
+        agents: ["Agent 13: Technical Compliance — SC audit requirements set", "Agent 16: Standards Compliance — ERC standards activated", "Agent 20: Calendar — SC Audit #1 scheduled"],
+        compliance: ["Custody regulatory requirements per jurisdiction documented", "GDPR data flows mapped", "All config decisions have compliance PM sign-off"],
+        documents: ["Token architecture document", "SPV incorporation docs", "RICS valuation", "Custody SLA", "Oracle agreement", "PoR methodology approval"],
+        audit: ["Cat.9: Admin Panel Config — token architecture locked", "Cat.15: Document — all L2 documents", "Cat.16: Assumption & Decision — custody model decision"],
+        reports: ["L2 Gate Report"],
+        budget: ["SPV Incorporation: €10-30k", "RICS Valuation: €5-15k", "Legal review: €20-50k", "Custody setup: €10-20k"],
+        raci: ["Technical PM: Responsible (token architecture)", "Legal PM: Responsible (SPV)", "CISO: Accountable (custody model)", "Compliance PM: Responsible (all compliance decisions)"],
+        integrations: [],
+        change: ["Architecture change after L2 = BAIT Major Change. Programme Director sign-off within 5 days.", "Custody model change post-L3 = critical compliance event — confirm required"]
+      },
+      {
+        id: "L3", name: "Technical Build",
+        desc: "Smart contract development, oracle integration, wallet setup, KYC/AML vendor integration, banking integration",
+        overlap: "L4 can start at 70% L3 completion",
+        gate: [
+          { text: "SC Audit #1 passed (zero critical, zero high)", blocker: true },
+          { text: "Oracle consensus >99.8%", blocker: true },
+          { text: "KYC pipeline tested — pass rate >95%", blocker: true },
+          { text: "Banking account opened (min 2 banks screened)", blocker: true },
+          { text: "KYT pipeline live and tested", blocker: true },
+          { text: "Multisig signing test passed", blocker: false },
+          { text: "ISO 27001 gap assessment started", blocker: true },
+        ],
+        plans: ["Plan #7: Smart Contract Development", "Plan #8: SC Audit #1 ⚠️ CRITICAL", "Plan #9: Oracle Integration", "Plan #10: Banking Integration ⚠️ STARTED TOO LATE", "Plan #11: KYC/AML Vendor Integration", "Plan #12: Wallet Architecture", "Plan #13: ISO 27001 ⚠️ STARTED TOO LATE", "Plan #14: DORA ICT Framework ⚠️ STARTED TOO LATE"],
+        tests: ["SC Audit #1 (L3, mandatory)", "Oracle Consensus Test (weekly automated)", "Banking Integration Test (per bank + regression)", "KYC/AML Pipeline Test (monthly automated)", "SAST (vendor responsibility on SC code) ★NEW", "SIT (System Integration Test) ★NEW"],
+        risks: ["SC audit critical finding — launch blocked → SEV1", "Bank refuses SPV — programme stops", "KYC/AML bottleneck = go-live blocker", "AWS concentration risk (Cashlink + 5 vendors on AWS eu-central-1)"],
+        issues: ["Technical (1): SC audit findings require remediation", "Vendor (4): Banking partner refuses SPV connected to blockchain", "Edge Case (7): Integration edge cases under concurrent load ★NEW"],
+        assumptions: ["Technical: SC audit will pass within one cycle", "Financial: Bank will onboard SPV within 12 weeks"],
+        decisions: ["Architectural: Blockchain network selection (ETH L1/Polygon/Avalanche)", "Architectural: Oracle provider selection (Chainlink/Pyth)", "Architectural: KYC vendor (Jumio + Chainalysis)"],
+        kpi: ["SC audit completion date", "Oracle uptime %", "KYC pass rate", "Banking integration test pass %"],
+        kri: ["SC audit critical finding detected", "Oracle consensus <99.8%", "KYC pass rate <70% (7-day rolling)", "Bank onboarding >20 weeks"],
+        agents: ["Agent 4: Guardian — SC event monitoring configured", "Agent 6: Oracle — gas fee tracker registered", "Agent 7: Onboarding — KYC pipeline", "Agent 13: Technical Compliance — SC audit requirements", "Agent 20: Calendar — SC Audit #1 + #2 scheduled"],
+        compliance: ["SC audit = GATE BLOCKER. No L4 without SC Audit #1 passed.", "DORA ICT Third-Party Register populated for all new vendors", "ISO 27001 gap assessment = GATE BLOCKER"],
+        documents: ["SC Audit #1 Report", "Oracle agreement + SLA", "Banking contract (min 2 banks)", "KYC/AML vendor contracts", "Wallet architecture document", "DORA ICT risk register"],
+        audit: ["Cat.3: Smart Contract Events — SC deployment", "Cat.7: Vendor & Contract — all vendor onboarding", "Cat.4: AI Agent Activity — agents becoming active"],
+        reports: ["SC Audit Report (per audit, CISO)", "Testing Status Report (Technical PM)", "Banking Integration Test Report"],
+        budget: ["SC Development: €50-200k", "SC Audit #1: €20-50k", "Banking onboarding: €5-10k", "KYC/AML setup: €20-50k", "KYT setup: €15-40k"],
+        raci: ["Technical PM: Responsible (SC dev, oracle, integrations)", "Banking PM: Responsible (banking integration)", "CISO: Responsible (security, wallet arch)", "MLRO: Responsible (AML programme live)"],
+        integrations: ["INT-RWA-01: Cashlink Connect Core API (Critical)", "INT-RWA-02: Oracle feeds — Chainlink + Pyth (Critical)", "INT-RWA-03: KYC vendor API — Jumio (Important)", "INT-RWA-04: AML/KYT — Chainalysis (Critical)", "INT-RWA-05: Banking — ISO 20022 (Critical)"],
+        change: ["Any SC architecture change after L3 lock = BAIT Major Change", "New blockchain network added → auto-triggers Agent 20 (audit schedule) + Agent 16 (standards)"]
+      },
+      {
+        id: "L4", name: "Testing & Compliance",
+        desc: "UAT, penetration test, DRP test, DORA ICT testing, KYC/AML live testing, investor onboarding pilot",
+        overlap: "Starts at 70% L3. L5 cannot start until L4 gate complete.",
+        gate: [
+          { text: "All mandatory tests passed (15 test types)", blocker: true },
+          { text: "Pen test report clean (all highs remediated)", blocker: true },
+          { text: "DRP tested — RTO/RPO met", blocker: true },
+          { text: "10 pilot investors onboarded (KYC pass, DID issued, token received)", blocker: true },
+          { text: "DORA Art.26 ICT resilience test criteria met", blocker: true },
+          { text: "KYT accuracy verified", blocker: true },
+          { text: "Travel Rule end-to-end confirmed", blocker: false },
+          { text: "SAST complete (vendor)", blocker: true },
+          { text: "DAST complete (bank/operator)", blocker: true },
+          { text: "SIT complete", blocker: true },
+        ],
+        plans: ["Plan #15: UAT Programme", "Plan #16: Penetration Test ⚠️ STARTED TOO LATE", "Plan #17: DRP Design & Test ⚠️ CRITICAL", "Last 20% sub-phase: Configuration & Edge Case Resolution ★NEW"],
+        tests: ["SC Audit #1 (must be passed to reach L4)", "Penetration Test", "DRP Test", "DORA ICT Test", "UAT — Investor Onboarding", "UAT — Settlement", "KYC/AML Pipeline Test", "EDD Workflow Test", "AML Procedures Drill", "PoR Reconciliation Test", "SAST ★NEW", "DAST ★NEW", "SIT ★NEW", "Regression Test ★NEW"],
+        risks: ["All tests fail in last 20% → delayed go-live", "DORA ICT test fails → NCA notified", "Pen test critical finding → SC redesign"],
+        issues: ["Edge Case (7): Requirement gaps discovered in UAT — not bugs ★NEW", "Technical (1): Integration edge cases under concurrent load", "Process (2): UAT not complete when timeline is tight"],
+        assumptions: ["Technical: All tests will pass within one test cycle", "Regulatory: DORA test criteria will be met"],
+        decisions: ["Risk Acceptance: Accept amber pen test findings with mitigation plan", "Architectural: Edge case resolution approach"],
+        kpi: ["Test completion rate (%)", "Pen test finding severity", "UAT pass rate (%)", "DRP RTO achieved"],
+        kri: ["Test completion rate <80% vs plan", "Critical pen test finding", "DORA ICT test fail", "UAT pilot investor drop-off >20%"],
+        agents: ["Agent 4: Guardian — pen test monitoring", "Agent 13: Technical Compliance — test tracking", "Agent 8: Incident Classification — test incidents", "Agent 20: Calendar — test schedule"],
+        compliance: ["No go-live without all mandatory tests passed", "DORA test report filed to NCA", "KYT must be live and tested"],
+        documents: ["Pen Test Report", "DRP Test Report", "DORA ICT Test Report", "UAT Sign-off", "SC Audit #1 Report (carry-forward)", "Edge Case Register ★NEW"],
+        audit: ["Cat.8: Incident & Escalation — test failures", "Cat.5: Compliance — KYC/AML test records", "Cat.12: Report Generation — all test reports"],
+        reports: ["Testing Status Report (per completion)", "Compliance Readiness Report (monthly)", "DORA ICT Test Report (to NCA)"],
+        budget: ["SC Audit #2: €20-50k", "Pen Test: €15-30k", "DORA ICT: €10-20k", "UAT resources: €10-20k", "SAST/DAST tools: ★NEW"],
+        raci: ["Technical PM: Responsible (all technical tests)", "CISO: Responsible (pen test, DRP, DORA)", "MLRO: Responsible (KYC/AML, EDD, AML drill)", "Compliance PM: Responsible (compliance tests)"],
+        integrations: ["All L3 integrations — regression tested in L4", "Integration Test per integration per wave ★NEW"],
+        change: ["Test failure → CM impact assessment mandatory", "Edge case requiring architecture change = BAIT Major Change"]
+      },
+      {
+        id: "L5", name: "Go-Live Preparation",
+        desc: "SC Audit #2, key ceremony, MFA rollout, investor communications, exchange listing, PoR baseline, rollout/rollback plans",
+        overlap: "L6 per wave can start in parallel with L5 of next wave",
+        gate: [
+          { text: "SC Audit #2 passed (zero critical)", blocker: true },
+          { text: "Key ceremony completed (M-of-N threshold)", blocker: true },
+          { text: "100% MFA adoption", blocker: true },
+          { text: "Exchange listing confirmed", blocker: true },
+          { text: "PoR baseline established", blocker: true },
+          { text: "Market maker agreement signed", blocker: true },
+          { text: "Rollout Plan ready + rehearsed ★NEW", blocker: true },
+          { text: "Rollback Plan ready ★NEW", blocker: true },
+          { text: "Support Rehearsal Test passed ★NEW", blocker: true },
+          { text: "Business Process Owner sign-off ★NEW", blocker: true },
+          { text: "Regulatory Reporting Dry Run passed ★NEW", blocker: true },
+          { text: "Vendor Support Transition sign-off ★NEW", blocker: false },
+          { text: "Hypercare Plan activated", blocker: true },
+        ],
+        plans: ["Plan #18: SC Audit #2", "Plan #19: Key Ceremony & MFA", "Plan #20: MFA Rollout", "Plan #21: Exchange Listing", "Plan #22: PoR Baseline", "Plan #23: Investor Communications", "Plan #26: Rollout Plan ★NEW", "Plan #27: Rollback Plan ★NEW", "Plan #29: Operational Runbook ★NEW", "Plan #30: Support Transition Plan ★NEW"],
+        tests: ["SC Audit #2 (CRITICAL)", "MFA Rollout Test", "Wallet Security Audit", "Custody Integration Final Test", "Support Rehearsal Test ★NEW", "Regulatory Reporting Dry Run ★NEW"],
+        risks: ["SC Audit #2 critical finding → launch blocked", "Market maker not available at go-live", "Rollback required within 24h post go-live"],
+        issues: ["Technical (1): Key ceremony quorum not met", "Vendor (4): Exchange listing delayed"],
+        assumptions: ["Technical: SC Audit #2 will pass without critical findings", "Market: Market maker will be active at go-live"],
+        decisions: ["Strategic: Go/No-Go decision for go-live", "Risk Acceptance: Accept any remaining amber findings"],
+        kpi: ["SC Audit #2 completion", "MFA adoption rate (%)", "PoR baseline accuracy (%)"],
+        kri: ["SC Audit #2 critical finding", "MFA adoption <100% at key ceremony", "PoR baseline mismatch >0.01%"],
+        agents: ["Agent 4: Guardian — key ceremony logged, custody monitoring", "Agent 20: Calendar — all L7 ongoing audits scheduled", "Agent 9: Reporting — first reports generated"],
+        compliance: ["SC Audit #2 = ABSOLUTE GATE BLOCKER", "PoR baseline = regulatory requirement", "All 3 new sign-offs mandatory ★NEW"],
+        documents: ["SC Audit #2 Report", "Key Ceremony Record", "PoR Baseline Document", "Rollout Plan ★NEW", "Rollback Plan ★NEW", "Operational Runbook ★NEW", "Support Transition Plan ★NEW", "Business Process Owner sign-off ★NEW"],
+        audit: ["Cat.4: AI Agent Activity — agent readiness tests", "Cat.17: Gate Decision — L5 gate", "Cat.13: Change — rollout plan approved"],
+        reports: ["L5 Gate Report (Board)", "Rollout Readiness Report ★NEW"],
+        budget: ["SC Audit #2: €30-80k", "Exchange listing: €20-50k", "Market maker setup: €10-30k", "Wallet audit: €10-20k"],
+        raci: ["CISO: Responsible (key ceremony, SC audit, security)", "Technical PM: Responsible (SC audit #2, PoR baseline)", "COO: Accountable (go/no-go decision)", "Service Manager: Responsible (support transition) ★NEW"],
+        integrations: ["All integrations final tested", "Exchange API live connectivity test", "INT-RWA-01 Cashlink Connect Core — production config"],
+        change: ["Go/No-Go is a strategic Decision (Cat. Strategic) — full CAB required", "Rollback Plan change requires COO + Programme Director joint approval"]
+      },
+      {
+        id: "L6", name: "Go-Live",
+        desc: "Token issuance, first investor transactions, monitoring activation, ops handover, hypercare start",
+        overlap: "G-OPS Gate triggers. L7 starts immediately. Next wave L5 runs in parallel.",
+        gate: [
+          { text: "First token minted", blocker: true },
+          { text: "First investor transaction settled", blocker: true },
+          { text: "All 22 agents active + tested (>99% uptime 48h)", blocker: true },
+          { text: "Operations team signed off (G-OPS Gate)", blocker: true },
+          { text: "Hypercare Plan activated (30 days)", blocker: true },
+          { text: "Smoke test passed (auto rollback if fail)", blocker: true },
+          { text: "Operations team trained + signed off", blocker: true },
+          { text: "All vendor SLAs active", blocker: false },
+          { text: "Reporting engine live (first reports generated)", blocker: false },
+        ],
+        plans: ["Plan #24: Operations Handover ⚠️ CRITICAL", "Plan #28: Hypercare Plan ★NEW"],
+        tests: ["Smoke Test (auto rollback trigger) ★NEW", "Agent Health Test (22 agents, >99% 48h uptime)"],
+        risks: ["Smoke test fail → automatic rollback", "SEV1 in 24h hypercare → human decision on rollback", "Market maker not providing liquidity at launch"],
+        issues: ["Technical (1): First transaction fails settlement", "Vendor (4): Exchange connectivity issues at launch"],
+        assumptions: ["Technical: Smoke test will pass", "Market: First transactions will complete within SLA"],
+        decisions: ["Operations: Rollback decision (COO + Programme Director, max 72h window) ★NEW"],
+        kpi: ["First token minted ✓/✗", "First settlement completed ✓/✗", "Agent uptime % (48h)", "Smoke test pass ✓/✗"],
+        kri: ["Smoke test fail → automatic rollback ★NEW", "SEV1 within 24h → rollback decision required ★NEW", "Agent health <70% → COO decides suspend + manual"],
+        agents: ["Agent 1: Portfolio MA — C-level alert if issues", "Agent 4: Guardian — SC events monitoring live", "Agent 5: Sentinel — SLA watchdog active", "Agent 6: Oracle — PoR continuous", "ALL 22 agents active"],
+        compliance: ["G-OPS Gate = non-negotiable. Operations team must formally sign off.", "No go-live without 2 SC audits + pen test clean + MLRO active + NCA approval + key ceremony"],
+        documents: ["G-OPS Gate sign-off form", "Hypercare Plan (signed)", "Rollback Decision Record (if needed) ★NEW", "Hypercare Exit Criteria document"],
+        audit: ["Cat.8: Incident — smoke test result, any SEV events", "Cat.13: Change — rollback if triggered", "Cat.17: Gate Decision — G-OPS gate"],
+        reports: ["L6 Gate Report (Board)", "First Day Operations Report ★NEW", "Rollback Report (if triggered) ★NEW"],
+        budget: ["Go-live prep, ops training: €30-80k", "Hypercare team cost", "CapEx closes → OpEx begins"],
+        raci: ["COO: Accountable (G-OPS gate, rollback decision)", "Programme Director: Responsible (handover)", "Operations Manager: Responsible (ops team sign-off)", "Service Manager: Responsible (hypercare activation) ★NEW"],
+        integrations: ["All integrations live — production traffic", "Rollback integration procedure documented ★NEW"],
+        change: ["Rollback = CM event — Cat.13 + Cat.8 audit. Human sign-off mandatory.", "Post go-live changes = Ops CAB (BAIT Major Change rules)"]
+      },
+      {
+        id: "L7", name: "Post-Launch Operations",
+        desc: "Ongoing: settlement, compliance monitoring, investor reporting, secondary market, incident management, regulatory reporting",
+        overlap: "Continuous — never ends. Programme domain hands over but stays available for reverse gate.",
+        gate: [
+          { text: "Operational Stability Date (Date 2) achieved ★NEW", blocker: false },
+          { text: "All countries BAU — zero escalations, zero open criticals ★NEW", blocker: false },
+          { text: "Hypercare exited all waves ★NEW", blocker: false },
+          { text: "KYT continuous monitoring confirmed running", blocker: true },
+          { text: "Calendar Agent — all audit schedules confirmed", blocker: true },
+          { text: "Enforcement Register live", blocker: false },
+        ],
+        plans: ["Plan #25: Post-Launch Review", "Plan #32: Operational Stability Plan (6-12 months) ★NEW"],
+        tests: ["Annual Pen Test", "Annual DORA ICT Resilience Test", "Semi-annual DRP Test", "Annual SC Security Review", "Annual Wallet Security Audit", "Annual Custody Audit", "Monthly Regulatory Reporting Audit"],
+        risks: ["MLRO departure → NCA notification within 4-8 weeks", "SC hack → token theft (SEV1)", "TVL target not met → operations unviable", "Regulatory change requiring re-architecture"],
+        issues: ["All 8 issue categories active in L7", "Parallel Run Discovery (8): Users find gaps vs old system ★NEW"],
+        assumptions: ["Operations: Platform SLA maintained at >99.9%", "Market: TVL grows to operational breakeven"],
+        decisions: ["Operations: Rollback from L7 to Programme (Reverse Gate)", "Operations: Custody model changes", "Operations: New jurisdiction activation"],
+        kpi: ["TVL (Total Value Locked)", "Settlement success rate >99%", "KYC pass rate >95%", "Investor onboarding rate", "Support ticket SLA >90%", "User Adoption Rate ★NEW", "Operational Stability Date ★NEW"],
+        kri: ["PoR mismatch (SEV1 trigger)", "KYC pass rate <70%", "Cold/hot ratio <80%", "Oracle feed stale >5min", "DORA deadline breach", "Settlement failure rate spike"],
+        agents: ["ALL 22 agents active and monitoring", "Agent 19: Market Intelligence — secondary market", "Agent 5: Sentinel — SLA watchdog", "Agent 11: Regulatory Intelligence — daily monitoring"],
+        compliance: ["KYT continuous on-chain screening", "Annual AML programme review (MLRO)", "Investor compliance reviews per type", "PoR daily automated verification", "SPV quarterly compliance review"],
+        documents: ["Monthly/quarterly/annual regulatory reports", "Custody Governance Report (quarterly)", "PoR Verification Report (monthly)", "Annual SC Security Review Report", "Operational Stability Report ★NEW"],
+        audit: ["ALL 18 audit log categories active", "7-year retention: Cat.5 (Compliance), Cat.6 (Settlement), Cat.10 (Investor)"],
+        reports: ["Secondary Market Health (daily+weekly)", "Vendor SLA Performance (monthly)", "Custody Governance (quarterly)", "PoR Verification (monthly)", "Investor Compliance per type", "Operational Stability Status (monthly post go-live) ★NEW"],
+        budget: ["OpEx: Platform licence, oracle fees, KYT, ISO 27001 surveillance, 21X listing", "OpEx replaces CapEx from L6"],
+        raci: ["COO: Accountable (all operations)", "Operations Manager: Responsible (daily ops)", "MLRO: Responsible (AML, regulatory)", "Service Manager: Responsible (support tiers 1-4)"],
+        integrations: ["All integrations in steady-state monitoring", "Agent 5 (Sentinel): SLA watchdog per integration", "Integration Health Report (weekly) ★NEW"],
+        change: ["Reverse Gate: Major incident/regulatory enforcement may trigger L7→Programme review", "All Ops changes = Ops CAB + Cat.13 audit log"]
+      }
+    ]
+  },
+
+  fintech: {
+    name: "The Fintech Engine",
+    subtitle: "Programme Delivery Intelligence — Bank & Multi-vendor",
+    layers: [
+      {
+        id: "L0", name: "Economic Viability & Programme Scope",
+        desc: "Business case, programme scope, country selection, vendor strategy, team composition, operating model",
+        overlap: "Cannot overlap — must be complete before L1",
+        gate: [
+          { text: "Business case approved — Board + CFO", blocker: true },
+          { text: "Country list confirmed + wave sequencing approved", blocker: true },
+          { text: "Operating model confirmed (in-house vs vendor-led)", blocker: true },
+          { text: "Budget approved (CapEx + OpEx estimate)", blocker: true },
+          { text: "Vendor shortlist approved (Core System, Middleware)", blocker: true },
+          { text: "Programme Director appointed", blocker: true },
+          { text: "Steering committee constituted", blocker: false },
+        ],
+        plans: ["Plan #1: Business Case & Operating Model", "Plan #2: Country & Wave Strategy"],
+        tests: [],
+        risks: ["Operating model wrong → programme restart", "Country sequencing flawed → wave cascade failures", "Budget underestimated — programme paused mid-delivery"],
+        issues: ["Strategic (Decision): Country prioritisation conflict between business and IT"],
+        assumptions: ["Financial: ROI achievable within programme timeline", "Market: Core System vendor can support all target countries", "Resource: Internal programme team available"],
+        decisions: ["Strategic: Country selection + wave sequencing", "Strategic: Build vs buy vs configure", "Strategic: Vendor strategy (single vs multi-vendor)"],
+        kpi: ["Business case approval date", "Wave plan sign-off date"],
+        kri: ["Budget variance >20% before L1", "Country count increases without wave plan resequencing", "How many countries can programme absorb failing simultaneously? ★NEW KRI"],
+        agents: ["Agent 1: Programme Master Agent — creates all 32 delivery plans", "Agent 6: Calendar & Deadline — schedules all deadlines"],
+        compliance: ["Compliance PM = Responsible from Week 2 in all design sessions ★NEW", "Regulatory requirements per country documented at L0"],
+        documents: ["Business Case", "Board approval minutes", "Country & Wave Strategy", "Vendor shortlist"],
+        audit: ["Cat.17: Gate Decision — L0 gate", "Cat.16: Assumption & Decision — operating model"],
+        reports: ["L0 Gate Report"],
+        budget: ["Feasibility study", "Advisory fees", "Team setup costs"],
+        raci: ["Programme Director: Accountable", "COO (bank): Sponsor", "Compliance Officer: Responsible (regulatory landscape per country)", "CFO: Responsible (budget)"],
+        integrations: [],
+        change: ["Country addition post-L0 = Programme CM event, CAB required", "Operating model change = programme restart risk"]
+      },
+      {
+        id: "L1", name: "Asset / Scope Definition & Legal",
+        desc: "Vendor contracts, regulatory requirements per country, RACI finalisation, master document list, initial risk register",
+        overlap: "L2 Solution Architecture can start at 50% L1 completion",
+        gate: [
+          { text: "Vendor contracts signed (Core System, Middleware)", blocker: true },
+          { text: "Regulatory requirements documented per country", blocker: true },
+          { text: "RACI Matrix finalised for all stakeholders", blocker: true },
+          { text: "Master Document List (MDL) created", blocker: true },
+          { text: "AML/KYC programme confirmed (if applicable)", blocker: false },
+          { text: "Data governance framework initiated", blocker: false },
+        ],
+        plans: ["Plan #3: Regulatory Strategy per Country", "Plan #4: Vendor Contracting ⚠️ STARTED TOO LATE", "Plan #5: RACI & Governance Setup"],
+        tests: ["ISO 27001 Gap Assessment (L1+)"],
+        risks: ["Vendor contract delays → programme start delayed", "Regulatory requirement gap per country discovered late", "RACI unclear → accountability gaps at delivery"],
+        issues: ["Vendor (4): Contract negotiation extends beyond planned timeline", "Regulatory (5): Country-specific compliance requirement not mapped"],
+        assumptions: ["Regulatory: All countries have mapped regulatory requirements by L1 gate", "Vendor: Core System vendor SLA confirmed"],
+        decisions: ["Governance: RACI for all 32 delivery plans", "Commercial: Vendor contract terms and SLAs"],
+        kpi: ["Vendor contract signature date", "RACI completion date", "MDL completion date"],
+        kri: ["Vendor contract not signed within 4 weeks of L1 start", "RACI gaps >10% of roles", "Regulatory requirement not documented for any wave country"],
+        agents: ["Agent 3: Vendor & SLA — SLA monitoring profiles created", "Agent 4: Risk & Issue — risk register created", "Agent 6: Calendar — contract expiry alerts set"],
+        compliance: ["Compliance Officer in all design sessions ★NEW", "Mandatory fields compliance justification documented ★NEW", "Per-country regulatory requirement mapping = deliverable"],
+        documents: ["Vendor contracts (MSA + SLA)", "Regulatory requirements per country", "RACI Matrix", "Master Document List", "Initial Risk Register"],
+        audit: ["Cat.7: Vendor & Contract — all vendor onboarding", "Cat.17: Gate Decision — L1 gate", "Cat.15: Document — all L1 documents"],
+        reports: ["L1 Gate Report"],
+        budget: ["Vendor licence fees start", "Legal fees (contracting)", "Regulatory advisory per country"],
+        raci: ["Programme Director: Accountable", "Legal PM: Responsible (vendor contracts)", "Compliance Officer: Responsible (regulatory mapping)", "Vendor Manager: Responsible (vendor onboarding)"],
+        integrations: ["INT-FE-01: Core System API (Critical) — contracted, not yet built", "INT-FE-02: Middleware API (Critical) — contracted"],
+        change: ["New country added at L1 = CM event. Wave plan resequencing required."]
+      },
+      {
+        id: "L2", name: "Solution Architecture",
+        desc: "Technical architecture, integration design, data migration strategy, infrastructure setup, compliance architecture",
+        overlap: "Starts at 50% L1. L3 cannot start until L2 gate complete.",
+        gate: [
+          { text: "Technical architecture document signed off (all stakeholders)", blocker: true },
+          { text: "Integration architecture approved (Middleware design)", blocker: true },
+          { text: "Data migration strategy approved", blocker: true },
+          { text: "Infrastructure setup approved (cloud/on-prem)", blocker: true },
+          { text: "Compliance architecture approved per country ★NEW", blocker: true },
+          { text: "Country-specific configuration delta documented ★NEW", blocker: false },
+        ],
+        plans: ["Plan #6: Technical Architecture", "Plan #7: Integration Architecture", "Plan #8: Data Migration Strategy"],
+        tests: ["GDPR Data Mapping (L2, annual)"],
+        risks: ["Architecture decision wrong → expensive rework", "Middleware integration complexity underestimated", "Data migration scope larger than estimated"],
+        issues: ["Technical (1): Integration architecture not aligned across vendor and bank IT", "Dependency (6): Group CTO approval of architecture delayed — CURRENT BLOCKER Serbia"],
+        assumptions: ["Technical: Middleware can support all target country integrations", "Technical: Core System API is stable between waves"],
+        decisions: ["Architectural: Middleware selection (sync vs async)", "Architectural: Data migration approach (big bang vs phased)", "Architectural: Cloud vs on-prem per country"],
+        kpi: ["Architecture approval date", "Integration design completion"],
+        kri: ["Architecture not approved by L2 midpoint", "Integration complexity >3x estimate"],
+        agents: ["Agent 1: Programme MA — architecture lock logged", "Agent 4: Risk & Issue — architecture risks tracked"],
+        compliance: ["Compliance architecture approved per country = GATE BLOCKER ★NEW", "All mandatory fields have compliance justification documented ★NEW"],
+        documents: ["Technical Architecture Document", "Integration Architecture Document", "Data Migration Strategy", "Compliance Architecture per Country ★NEW", "Country Configuration Delta ★NEW"],
+        audit: ["Cat.16: Assumption & Decision — architecture decisions", "Cat.9: Admin Panel Config — architecture locked"],
+        reports: ["L2 Gate Report", "Architecture Decision Record"],
+        budget: ["Architecture advisory: €20-50k", "Infrastructure setup: varies", "Migration tooling"],
+        raci: ["Technical PM: Responsible (architecture)", "Integration Director: Responsible (integration design)", "Compliance Officer: Responsible (compliance architecture) ★NEW", "Group CTO: Approver (sign-off gate)"],
+        integrations: ["INT-FE-01: Core System — detailed API spec defined", "INT-FE-02: Middleware — integration design finalized", "INT-FE-03: CBS (Core Banking System) — integration design", "INT-FE-04: DMS (Document Management) — design", "INT-FE-05: Regulatory Reporting — design"],
+        change: ["Architecture change after L2 lock = BAIT Major Change. Programme Director sign-off.", "Country-specific deviation from architecture = CM event + Country Config Delta document"]
+      },
+      {
+        id: "L3", name: "Technical Build",
+        desc: "Core System configuration, middleware implementation, integration build, initial data migration, environment setup per country",
+        overlap: "L4 can start at 70% L3. Build continues per wave.",
+        gate: [
+          { text: "Core System configured (anchor country)", blocker: true },
+          { text: "Middleware integration built + unit tested", blocker: true },
+          { text: "SIT — System Integration Test passed ★NEW", blocker: true },
+          { text: "Data migration pilot completed (sample data)", blocker: true },
+          { text: "SAST completed by vendor ★NEW", blocker: true },
+          { text: "Banking account / settlement configured", blocker: false },
+          { text: "Environments set up (DEV/TEST/UAT/PROD)", blocker: true },
+        ],
+        plans: ["Plan #9: Core System Configuration", "Plan #10: Integration Build", "Plan #11: Data Migration Build ⚠️ STARTED TOO LATE", "Plan #12: Environment Setup"],
+        tests: ["SAST (vendor responsibility) ★NEW", "SIT — System Integration Test ★NEW", "Unit Tests (vendor)", "Integration Tests (Joint)", "Data Migration Pilot Test"],
+        risks: ["Core System configuration complexity per country underestimated (last 20% problem)", "Middleware integration edge cases under concurrent load ★NEW", "Data migration quality issues discovered late"],
+        issues: ["Edge Case (7): Core System edge cases in credit policy per country ★NEW", "Technical (1): API timeout >200ms under peak load", "Vendor (4): Vendor patch delivery delayed"],
+        assumptions: ["Technical: Core System vendor delivers patch per plan", "Technical: Data migration volume within estimate"],
+        decisions: ["Architectural: Edge case resolution approach ★NEW", "Technical: Country-specific Core System configuration delta ★NEW"],
+        kpi: ["Integration build completion %", "SIT pass rate", "SAST findings count", "Data migration pilot accuracy %"],
+        kri: ["SIT fail → blocks L4", "SAST critical finding", "Vendor patch not delivered by milestone"],
+        agents: ["Agent 3: Vendor & SLA — build milestone monitoring", "Agent 4: Risk & Issue — build risks tracked", "Agent 1: Programme MA — delivery plan tracking"],
+        compliance: ["SAST = GATE BLOCKER (vendor responsibility) ★NEW", "All country-specific compliance configs validated by Compliance Officer"],
+        documents: ["SIT Test Report ★NEW", "SAST Report ★NEW", "Data Migration Pilot Report", "Country Configuration Delta (per country) ★NEW", "Edge Case Register ★NEW"],
+        audit: ["Cat.7: Vendor & Contract — vendor build delivery", "Cat.8: Incident — SIT/SAST failures"],
+        reports: ["Build Progress Report (weekly)", "SIT Status Report ★NEW"],
+        budget: ["Core System configuration: vendor fees", "Integration build: internal + vendor", "Test environments: infrastructure"],
+        raci: ["Technical PM: Responsible (all build)", "Vendor Manager: Responsible (vendor deliverables)", "QA Lead: Responsible (SIT)", "Country PM: Responsible (country config delta) ★NEW"],
+        integrations: ["INT-FE-01: Core System — configured and unit tested", "INT-FE-02: Middleware — built and SIT tested", "INT-FE-03: CBS — built and SIT tested", "INT-FE-04: DMS — built", "INT-FE-05: Regulatory Reporting — built"],
+        change: ["Edge case requiring architecture change = BAIT Major Change ★NEW", "Country-specific build deviation = CM event + config delta update ★NEW"]
+      },
+      {
+        id: "L4", name: "Testing & Compliance",
+        desc: "UAT, penetration test, DRP test, DORA ICT testing, performance test, parallel run, data migration test — per wave",
+        overlap: "Starts at 70% L3. L5 cannot start until L4 gate. Last 20% sub-phase mandatory.",
+        gate: [
+          { text: "UAT sign-off — all wave countries", blocker: true },
+          { text: "Penetration test clean", blocker: true },
+          { text: "DRP test — RTO/RPO met", blocker: true },
+          { text: "Performance/Load test passed ★NEW", blocker: true },
+          { text: "Parallel Run planned + started (anchor country) ★NEW", blocker: true },
+          { text: "Data Migration Test completed ★NEW", blocker: true },
+          { text: "DAST completed ★NEW", blocker: true },
+          { text: "Regression Test per wave passed ★NEW", blocker: true },
+          { text: "Last 20% sub-phase completed ★NEW", blocker: true },
+          { text: "Wave Dependency Validation passed ★NEW", blocker: true },
+        ],
+        plans: ["Plan #13: UAT Programme per Wave", "Plan #14: Penetration Test ⚠️ STARTED TOO LATE", "Plan #15: DRP & BCP Test ⚠️ CRITICAL", "Plan #16: Performance Test ★NEW", "Plan #17: Data Migration Test ★NEW", "Last 20% sub-phase: Configuration & Edge Case Resolution ★NEW"],
+        tests: ["UAT — End User Acceptance (per wave)", "Penetration Test (annual + major changes)", "DRP Test (semi-annual)", "DORA ICT Test (annual)", "Performance / Load Test ★NEW", "Parallel Run ★NEW", "Data Migration Test ★NEW", "DAST ★NEW", "Regression Test (per wave) ★NEW", "Wave Dependency Validation ★NEW", "Smoke Test (per go-live) ★NEW", "Regulatory Reporting Dry Run ★NEW"],
+        risks: ["UAT discovers requirement gaps (not bugs) — last 20% problem ★NEW", "Performance fails under banking peak load", "Data migration quality issues discovered in testing", "Parallel run reveals process gaps vs old system ★NEW"],
+        issues: ["Edge Case (7): Requirement gaps in UAT — not bugs ★NEW", "Parallel Run Discovery (8): System works but doesn't match how they really work ★NEW", "Technical (1): Performance bottleneck under load", "Process (2): UAT not complete when timeline tight"],
+        assumptions: ["Technical: Performance test will pass at peak load", "Process: Business users available for UAT within timeline"],
+        decisions: ["Risk Acceptance: Accept amber pen test findings with mitigation", "Process: Parallel run duration per country ★NEW"],
+        kpi: ["UAT pass rate %", "Pen test severity", "Performance SLA achieved %", "Data migration accuracy %", "Parallel run discrepancy count ★NEW"],
+        kri: ["UAT fail rate >20% ★NEW", "Performance test SLA miss", "Data migration accuracy <99%", "Parallel run critical discrepancy ★NEW"],
+        agents: ["Agent 4: Risk & Issue — test failures tracked", "Agent 6: Calendar — test schedule", "Agent 2: Escalation Orchestrator — test gate blockers escalated"],
+        compliance: ["Regulatory Reporting Dry Run = GATE BLOCKER ★NEW", "DAST = GATE BLOCKER ★NEW", "All country-specific compliance configs re-validated"],
+        documents: ["UAT Sign-off per wave", "Pen Test Report", "DRP Test Report", "Performance Test Report ★NEW", "Data Migration Test Report ★NEW", "Parallel Run Log ★NEW", "Edge Case Register ★NEW", "Country Config Delta (final) ★NEW"],
+        audit: ["Cat.8: Incident — all test failures", "Cat.16: Assumption — config decisions", "Cat.15: Document — all test reports"],
+        reports: ["Testing Status Report (per completion)", "Parallel Run Status Report ★NEW", "Wave Readiness Report (pre gate)"],
+        budget: ["UAT resources", "Pen test firm", "Performance test tools ★NEW", "DRP test execution"],
+        raci: ["Technical PM: Responsible (all technical tests)", "QA Lead: Responsible (UAT, regression)", "CISO: Responsible (pen test, DAST, DRP)", "Business PM: Responsible (UAT sign-off, parallel run) ★NEW", "Country PM: Responsible (country UAT) ★NEW"],
+        integrations: ["All integrations — regression tested per wave ★NEW", "Integration Test per integration per wave ★NEW", "INT-FE-01 to INT-FE-05 — all regression tested"],
+        change: ["Parallel Run Discovery issue → CM assessment mandatory ★NEW", "Edge case architecture change = BAIT Major Change ★NEW"]
+      },
+      {
+        id: "L5", name: "Go-Live Preparation (per Wave)",
+        desc: "Wave-specific rollout planning, support transition, training, regulatory readiness, hypercare preparation — per wave per country",
+        overlap: "L6 for Wave N runs in parallel with L5 for Wave N+1",
+        gate: [
+          { text: "Rollout Plan ready + rehearsed (per wave) ★NEW", blocker: true },
+          { text: "Rollback Plan ready (per wave) ★NEW", blocker: true },
+          { text: "Support Rehearsal Test passed ★NEW", blocker: true },
+          { text: "Business Process Owner sign-off ★NEW", blocker: true },
+          { text: "Regulatory Reporting Dry Run passed ★NEW", blocker: true },
+          { text: "Vendor Support Transition sign-off ★NEW", blocker: false },
+          { text: "Training completion (all users)", blocker: true },
+          { text: "Hypercare Plan activated (per wave) ★NEW", blocker: true },
+          { text: "Wave Dependency Validation passed ★NEW", blocker: true },
+          { text: "MFA rollout complete", blocker: true },
+        ],
+        plans: ["Plan #18: Training (per wave)", "Plan #19: Wave Go-Live Preparation", "Plan #26: Rollout Plan per Wave ★NEW", "Plan #27: Rollback Plan per Wave ★NEW", "Plan #28: Hypercare Plan per Wave ★NEW", "Plan #29: Operational Runbook ★NEW", "Plan #30: Support Transition Plan ★NEW"],
+        tests: ["Support Rehearsal Test (per wave, min 2 weeks before go-live) ★NEW", "Regulatory Reporting Dry Run ★NEW", "MFA Rollout Test", "Smoke Test dry run"],
+        risks: ["Support team not ready for live traffic → first week issues", "Business process owners not signed off → ops confusion ★NEW", "Wave dependency not validated → cascade delays ★NEW"],
+        issues: ["Resource (3): Training not completed within timeline", "Vendor (4): Vendor support transition not formalised ★NEW"],
+        assumptions: ["Resource: Business process owners available for sign-off ★NEW", "Vendor: Vendor hypercare team confirmed per wave ★NEW"],
+        decisions: ["Operations: Go/No-Go per wave (COO + Programme Director)", "Risk Acceptance: Any open medium issues at go-live"],
+        kpi: ["Training completion rate %", "Support rehearsal pass rate ★NEW", "Rollout plan readiness"],
+        kri: ["Support rehearsal fail → go-live blocked ★NEW", "Business Process Owner not signed off ★NEW", "Wave dependency not validated ★NEW"],
+        agents: ["Agent 1: Programme MA — go/no-go check", "Agent 6: Calendar — hypercare countdown starts", "Agent 2: Escalation Orchestrator — L5 gate blockers escalated"],
+        compliance: ["3 new mandatory sign-offs (Business Process Owner, Regulatory Reporting, Vendor Support) ★NEW", "Per-country regulatory readiness confirmed"],
+        documents: ["Rollout Plan per Wave ★NEW", "Rollback Plan per Wave ★NEW", "Hypercare Plan per Wave ★NEW", "Operational Runbook ★NEW", "Support Transition Plan ★NEW", "Business Process Owner sign-off ★NEW", "Wave Go/No-Go Decision Record"],
+        audit: ["Cat.17: Gate Decision — L5 gate per wave", "Cat.13: Change — rollout plan approval", "Cat.15: Document — all L5 documents"],
+        reports: ["Wave Readiness Report", "L5 Gate Report per Wave ★NEW"],
+        budget: ["Training costs", "Hypercare team cost", "Support setup"],
+        raci: ["COO: Accountable (go/no-go)", "Programme Director: Responsible (wave readiness)", "Service Manager: Responsible (support transition) ★NEW", "Country PM: Responsible (country readiness) ★NEW", "Business PM: Responsible (BPO sign-off) ★NEW"],
+        integrations: ["All wave integrations final tested", "INT-FE per wave — production readiness confirmed"],
+        change: ["Go/No-Go = strategic Decision — full CAB per wave", "Rollback plan change requires COO + Programme Director"]
+      },
+      {
+        id: "L6", name: "Go-Live (per Wave)",
+        desc: "Wave go-live, first transactions, hypercare start, monitoring activation per country",
+        overlap: "G-OPS equivalent per wave. L7 starts per country. Next wave L5 runs in parallel.",
+        gate: [
+          { text: "First transaction completed per country", blocker: true },
+          { text: "Smoke test passed (auto rollback if fail) ★NEW", blocker: true },
+          { text: "Hypercare activated per country ★NEW", blocker: true },
+          { text: "Operations team signed off per country", blocker: true },
+          { text: "Vendor support transition confirmed ★NEW", blocker: true },
+          { text: "All agents monitoring (6 agents) ★NEW", blocker: false },
+          { text: "Rollback window defined (24-72h) ★NEW", blocker: true },
+        ],
+        plans: ["Plan #28: Hypercare Plan per Country ★NEW"],
+        tests: ["Smoke Test (auto rollback if fail) ★NEW"],
+        risks: ["Smoke test fail → automatic rollback ★NEW", "SEV1 in hypercare window → rollback decision ★NEW", "User adoption drops → business case at risk"],
+        issues: ["Technical (1): First transaction fails", "Parallel Run Discovery (8): Live system vs old system discrepancy ★NEW"],
+        assumptions: ["Technical: Smoke test will pass per country", "Operations: Hypercare team available 24/7 for 30 days minimum"],
+        decisions: ["Operations: Rollback decision (COO + Programme Director, max 72h) ★NEW"],
+        kpi: ["First transaction per country ✓/✗", "Smoke test pass ✓/✗ ★NEW", "Hypercare stability score", "User adoption rate Day 1 ★NEW"],
+        kri: ["Smoke test fail → rollback triggered ★NEW", "SEV1 in first 24h → rollback assessment ★NEW", "User adoption <50% Day 1 → escalation"],
+        agents: ["Agent 1: Programme MA — wave go-live coordination", "Agent 2: Escalation Orchestrator — live escalations", "Agent 4: Risk & Issue — live issues tracked", "Agent 6: Calendar — hypercare countdown"],
+        compliance: ["Wave go-live checklist per country compliance confirmed", "Regulatory reporting activated per country"],
+        documents: ["Wave Go-Live Sign-off per Country", "Hypercare Plan (activated) ★NEW", "Rollback Decision Record (if triggered) ★NEW"],
+        audit: ["Cat.8: Incident — go-live events, rollback if triggered", "Cat.17: Gate Decision — wave go-live gate", "Cat.13: Change — rollback CM event ★NEW"],
+        reports: ["Wave Go-Live Report", "First Day Operations Report per Country ★NEW", "Rollback Report (if triggered) ★NEW"],
+        budget: ["Hypercare costs per country", "Support activation costs", "CapEx closes per wave → OpEx begins"],
+        raci: ["COO: Accountable (rollback decision) ★NEW", "Country PM: Responsible (wave go-live)", "Service Manager: Responsible (hypercare) ★NEW", "Operations Manager: Responsible (monitoring activation)"],
+        integrations: ["All wave integrations live — production traffic", "Rollback integration procedure documented ★NEW"],
+        change: ["Rollback = CM event (Cat.13 + Cat.8). Human sign-off mandatory.", "Post go-live per country = Ops CAB"]
+      },
+      {
+        id: "L7", name: "Post-Launch Operations (per Country)",
+        desc: "BAU operations, compliance monitoring, hypercare exit, Operational Stability Date, user adoption monitoring",
+        overlap: "Continuous per country. Date 2 (Operational Stability) = 6-12 months after last country go-live.",
+        gate: [
+          { text: "Hypercare exited — BAU confirmed per country ★NEW", blocker: false },
+          { text: "Operational Stability Date (Date 2) achieved — ALL countries ★NEW", blocker: false },
+          { text: "Zero SEV1/2 open per country for 30 consecutive days ★NEW", blocker: false },
+          { text: "Vendor SLA >99% sustained for 60 days", blocker: false },
+          { text: "User adoption >80% per country ★NEW", blocker: false },
+        ],
+        plans: ["Plan #25: Post-Launch Review per Wave", "Plan #32: Operational Stability Plan (6-12 months) ★NEW"],
+        tests: ["Annual Pen Test", "Annual DRP Test", "Annual DORA ICT Test", "Regression Test (major releases)", "Annual ISO 27001 surveillance"],
+        risks: ["Operational Stability Date not achieved → steering committee concern ★NEW", "User adoption stays low → business case risk ★NEW", "Vendor SLA degradation in steady state"],
+        issues: ["All 8 issue categories active", "Parallel Run Discovery (8): Ongoing user-reported process gaps ★NEW"],
+        assumptions: ["Operations: Vendor SLA maintained at contracted levels", "Market: User adoption reaches >80% within 6 months ★NEW"],
+        decisions: ["Operations: Country-specific BAU changes (Ops CAB)", "Strategic: Expand to new countries (triggers new L0)"],
+        kpi: ["System uptime per country (%)", "SLA adherence per vendor (%)", "User Adoption Rate per country ★NEW", "Transaction volume per country", "Hypercare exit date per country ★NEW", "Operational Stability Date ★NEW"],
+        kri: ["User adoption <50% at 3 months ★NEW", "Vendor SLA breach >3 times/month", "Open SEV1 >4h", "Country going back into escalation after hypercare exit ★NEW"],
+        agents: ["ALL 6 agents active and monitoring", "Agent 3: Vendor & SLA — steady state SLA monitoring", "Agent 4: Risk & Issue — ongoing risk monitoring", "Agent 2: Escalation Orchestrator — BAU escalations"],
+        compliance: ["Annual compliance reviews per country", "Regulatory reporting per country — monthly/quarterly", "GDPR annual review per country"],
+        documents: ["Monthly Operations Reports per country", "Hypercare Exit Report per country ★NEW", "Operational Stability Report (monthly) ★NEW", "Date 2 Achievement Report ★NEW", "Wave Lessons Learned (per wave closure) ★NEW"],
+        audit: ["ALL 18 audit categories active", "7-year retention for compliance/regulatory logs"],
+        reports: ["Country Status Report (weekly) ★NEW", "User Adoption Report (monthly) ★NEW", "Hypercare Exit Report per country ★NEW", "Operational Stability Status (monthly post last go-live) ★NEW", "Date 2 Achievement Report ★NEW", "Steering Committee Report (both dates — Date 1 + Date 2) ★NEW"],
+        budget: ["OpEx: All vendor licences + support tiers", "Hypercare team (while active)", "Annual testing + compliance costs"],
+        raci: ["COO: Accountable (all operations)", "Country PM: Responsible (per country BAU)", "Service Manager: Responsible (support all tiers)", "Vendor Manager: Responsible (vendor SLA) ★NEW"],
+        integrations: ["All integrations steady-state", "Integration Health Report (weekly) ★NEW", "Agent 3 (Vendor & SLA): SLA watchdog per integration ★NEW"],
+        change: ["All BAU changes = Ops CAB", "New country = new L0 programme", "Reverse Gate: Country incidents may trigger L7→Programme review"]
+      }
+    ]
+  }
+};
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let currentSystem = 'rwa';
+let currentLayer = 0;
+
+// ── RENDER ────────────────────────────────────────────────────────────────────
+function switchSystem(sys, btn) {
+  currentSystem = sys;
+  currentLayer = 0;
+  document.querySelectorAll('.sys-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderSidebar();
+  renderContent();
+}
+
+function renderSidebar() {
+  const data = SYSTEMS[currentSystem];
+  const sb = document.getElementById('sidebar');
+  sb.innerHTML = data.layers.map((l, i) => `
+    <button class="layer-btn ${i === currentLayer ? 'active' : ''}" onclick="selectLayer(${i})">
+      <span class="lnum">${l.id}</span>
+      <span class="lname">${l.name.split(' ')[0]}${l.name.split(' ').length > 1 ? '...' : ''}</span>
+    </button>
+  `).join('');
+}
+
+function selectLayer(idx) {
+  currentLayer = idx;
+  document.querySelectorAll('.layer-btn').forEach((b, i) => {
+    b.classList.toggle('active', i === idx);
+  });
+  renderContent();
+}
+
+function tag(label, type) {
+  return `<span class="tag ${type}">${label}</span>`;
+}
+
+function entityCard(icon, title, items) {
+  if (!items || items.length === 0) return '';
+  const itemsHtml = items.map(item => {
+    if (typeof item === 'string') {
+      const isNew = item.includes('★NEW');
+      const text = item.replace(' ★NEW', '');
+      return `<div class="entity-item">
+        ${isNew ? tag('NEW', 'new') : ''}
+        <span class="text">${text}</span>
+      </div>`;
+    }
+    return `<div class="entity-item"><span class="text">${item}</span></div>`;
+  }).join('');
+  return `
+    <div class="entity-card">
+      <div class="entity-card-header">
+        <span class="entity-icon">${icon}</span>
+        <span class="entity-title">${title}</span>
+      </div>
+      <div class="entity-body">${itemsHtml}</div>
+    </div>`;
+}
+
+function renderContent() {
+  const data = SYSTEMS[currentSystem];
+  const layer = data.layers[currentLayer];
+  const content = document.getElementById('content');
+
+  const gateItems = layer.gate.map(g =>
+    `<div class="gate-item ${g.blocker ? 'blocker' : ''}">${g.text}${g.blocker ? ' <span style="color:var(--red);font-size:10px;font-family:monospace">BLOCKER</span>' : ''}</div>`
+  ).join('');
+
+  const agentChips = layer.agents.map(a => {
+    const isNew = a.includes('★NEW');
+    const text = a.replace(' ★NEW', '');
+    return `<div class="agent-chip ${isNew ? 'new-agent' : ''}">${text}</div>`;
+  }).join('');
+
+  content.innerHTML = `
+    <div class="layer-header">
+      <div class="layer-badge">${layer.id}</div>
+      <div class="layer-title">
+        <h2>${layer.name}</h2>
+        <p>${layer.desc}</p>
+        <p class="fintech-name">⟳ ${layer.overlap}</p>
+      </div>
+    </div>
+
+    <div class="overlap-rule">⚡ OVERLAP RULE: ${layer.overlap}</div>
+
+    <div class="gate-box">
+      <h3>🚦 Gate Exit Criteria — cannot proceed without these</h3>
+      ${gateItems}
+    </div>
+
+    <div class="entity-card" style="margin-bottom:16px">
+      <div class="entity-card-header">
+        <span class="entity-icon">🤖</span>
+        <span class="entity-title">AI Agents Active / Activated</span>
+      </div>
+      <div class="agents-row">${agentChips}</div>
+    </div>
+
+    <div class="entity-grid">
+      ${entityCard('📋', 'Delivery Plans', layer.plans)}
+      ${entityCard('🧪', 'Tests (mandatory)', layer.tests)}
+      ${entityCard('⚠️', 'Risks', layer.risks)}
+      ${entityCard('🔴', 'Issues (categories active)', layer.issues)}
+      ${entityCard('💭', 'Assumptions', layer.assumptions)}
+      ${entityCard('✅', 'Decisions', layer.decisions)}
+      ${entityCard('📊', 'KPI', layer.kpi)}
+      ${entityCard('🚨', 'KRI (threshold triggers escalation)', layer.kri)}
+      ${entityCard('🛡️', 'Compliance requirements', layer.compliance)}
+      ${entityCard('📁', 'Documents (input/output)', layer.documents)}
+      ${entityCard('📝', 'Audit Log categories', layer.audit)}
+      ${entityCard('📈', 'Reports generated', layer.reports)}
+      ${entityCard('💰', 'Budget (CapEx)', layer.budget)}
+      ${entityCard('👥', 'RACI', layer.raci)}
+      ${entityCard('🔌', 'Integrations', layer.integrations)}
+      ${entityCard('🔄', 'Change Management', layer.change)}
+    </div>
+  `;
+}
+
+// INIT
+renderSidebar();
+renderContent();
+</script>
+</body>
+</html>
